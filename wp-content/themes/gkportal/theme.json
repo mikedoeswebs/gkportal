@@ -26,6 +26,11 @@
           "name": "Light",
           "slug": "light",
           "color": "#F9FAFB"
+        },
+        {
+          "name": "Grey 500",
+          "slug": "grey-500",
+          "color": "#ddd"
         }
       ]
     },
