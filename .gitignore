@@ -1,0 +1,34 @@
+# Numerous always-ignore extensions. Do not use *. to ignore all files beginning with a .
+*.diff
+*.err
+*.log
+*.old
+*.ftpquota
+*.zip
+*.ini
+*.cache
+
+# OS or Editor files and folders
+.DS_Store
+Thumbs.db
+phpinfo.php
+error_log
+.well-known
+
+# Any directory with the name node_modules
+node_modules/
+
+# Composer phar file and document root level vendor directory
+composer.phar
+/vendor/
+
+# WordPress Files
+/.htaccess
+/wp-config.php
+/wp-content/uploads
+/wp-content/cache/
+
+.idea
+#*.css.map
+#*.js.map
+update.sh
