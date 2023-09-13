@@ -31,6 +31,16 @@
           "name": "Grey 500",
           "slug": "grey-500",
           "color": "#ddd"
+        },
+        {
+          "name": "Red 500",
+          "slug": "red-500",
+          "color": "#e52e2e"
+        },
+        {
+          "name": "Green 500",
+          "slug": "green-500",
+          "color": "#73d54a"
         }
       ]
     },

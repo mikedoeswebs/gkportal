@@ -1,5 +1,5 @@
-article > *:not(.entry-content),
-.entry-content > * {
+.entry-header,
+.entry-content {
     @apply mx-auto max-w-content;
 }
 
@@ -26,7 +26,7 @@ article > *:not(.entry-content),
             }
         }
 
-        @apply mb-8;
+        @apply mb-4;
     }
 
     ul:not(.block-editor-block-variation-picker__variations) {
