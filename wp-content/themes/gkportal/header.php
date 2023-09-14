@@ -40,18 +40,26 @@
 							</a>
 						</div>
 					</div>
-					<?php
-						wp_nav_menu(
-							array(
-								'container_id'    => 'primary-menu',
-								'container_class' => 'hidden bg-gray-100 mt-4 p-4 lg:mt-0 lg:p-0 lg:bg-transparent lg:block',
-								'menu_class'      => 'lg:flex lg:-mx-4',
-								'theme_location'  => 'primary',
-								'li_class'        => 'lg:mx-4',
-								'fallback_cb'     => false,
-							)
-						);
-					?>
+					<div class="flex">
+						<?php
+							wp_nav_menu(
+								array(
+									'container_id'    => 'primary-menu',
+									'container_class' => 'hidden bg-gray-100 mt-4 p-4 lg:mt-0 lg:p-0 lg:bg-transparent lg:block',
+									'menu_class'      => 'lg:flex lg:-mx-4',
+									'theme_location'  => 'primary',
+									'li_class'        => 'lg:mx-4',
+									'fallback_cb'     => false,
+								)
+							);
+						?>
+						<?php if (is_user_logged_in()) : ?>
+							<a class="mr-4 ml-8" href="<?php echo get_the_permalink(84); ?>">Profile</a>
+							<a class="ml-4" href="<?php echo wp_logout_url(get_permalink()); ?>">Logout</a>
+						<?php else : ?>
+							<a class="ml-8" href="<?php echo get_the_permalink(82); ?>">Login</a>
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 		</header>

@@ -99,3 +99,47 @@ function tailpress_nav_menu_add_submenu_class($classes, $args, $depth) {
 	return $classes;
 }
 add_filter('nav_menu_submenu_css_class', 'tailpress_nav_menu_add_submenu_class', 10, 3);
+
+
+/**
+ * Stop non-admins accessing dashboard
+ */
+function redirect_subscribers_from_dashboard() {
+	if (is_user_logged_in() && is_admin() && !current_user_can('administrator') && !(defined('DOING_AJAX') && DOING_AJAX)) {
+		wp_redirect(home_url());
+		exit;
+	}
+}
+add_action('init', 'redirect_subscribers_from_dashboard');
+
+
+/**
+ * Hide admin bar for non-admins
+ */
+function hide_admin_bar_for_non_admins() {
+	if (!current_user_can('administrator') && !(defined('DOING_AJAX') && DOING_AJAX)) {
+		add_filter('show_admin_bar', '__return_false');
+	}
+}
+add_action('init', 'hide_admin_bar_for_non_admins');
+
+
+/**
+ * Update user field on profile creation
+ */
+if (!is_admin()) {
+	add_action('acf/save_post', 'set_player_post_title_on_save', 20);
+}
+function set_player_post_title_on_save($post_id){
+	$user_id = get_post_field('post_author', $post_id);
+	update_field('user_player_profile', $post_id, 'user_' . $user_id);
+
+	$new_title = get_field('player_first_name', $post_id) . ' ' . get_field('player_last_name', $post_id);
+	$new_post = array(
+		'ID'           => $post_id,
+		'post_title'   => $new_title,
+	);
+	remove_action('acf/save_post', 'set_player_post_title_on_save', 20);
+	wp_update_post($new_post);
+	add_action('acf/save_post', 'set_player_post_title_on_save', 20);
+}

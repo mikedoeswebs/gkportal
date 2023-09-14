@@ -80,7 +80,7 @@
 									<?php if (!empty(get_field('player_position'))) : ?>
 										<p>
 											<?php $i = 0; foreach (get_field('player_position') as $position) : $i++; ?>
-												<span class="capitalize"><?php echo $position; ?><?php if ($i < count(get_field('player_position'))) {echo ', ';} ?></span>
+												<span class="capitalize"><?php echo $position['label']; ?><?php if ($i < count(get_field('player_position'))) {echo ', ';} ?></span>
 											<?php endforeach; ?>
 										</p>
 									<?php endif; ?>

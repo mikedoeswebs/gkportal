@@ -88,7 +88,7 @@
                 .acf-actions {
                     @apply text-left;
                     .acf-button {
-                        @apply float-none p-3 bg-primary text-white inline-block;
+                        @apply float-none;
                     }
                 }
             }
@@ -98,5 +98,8 @@
                 @apply text-xs italic;
             }
         }
+    }
+    .acf-button {
+        @apply inline-flex items-center bg-blue-500 hover:bg-blue-700 text-white no-underline py-3 px-4 rounded transition-all;
     }
 }

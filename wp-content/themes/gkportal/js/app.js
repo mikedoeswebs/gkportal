@@ -14,12 +14,6 @@ window.addEventListener('load', function () {
     e.preventDefault();
     main_navigation.classList.toggle('hidden');
   });
-
-  var player_filers = document.querySelector('#player-filters');
-  document.querySelector('#player-filter-toggle').addEventListener('click', function (e) {
-    e.preventDefault();
-    player_filers.classList.toggle('hidden');
-  });
 });
 
 /***/ }),

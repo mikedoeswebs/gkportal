@@ -38,6 +38,11 @@
           "color": "#e52e2e"
         },
         {
+          "name": "Red 100",
+          "slug": "red-100",
+          "color": "#ffeded"
+        },
+        {
           "name": "Green 500",
           "slug": "green-500",
           "color": "#73d54a"
