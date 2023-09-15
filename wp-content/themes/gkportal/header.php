@@ -12,7 +12,7 @@
 	<div id="page" class="min-h-screen flex flex-col">
 		<?php do_action('tailpress_header'); ?>
 		<header>
-			<div class="mx-auto container">
+			<div class="mx-auto container px-4">
 				<div class="lg:flex lg:justify-between lg:items-center border-b py-6">
 					<div class="flex justify-between items-center">
 						<div>
@@ -57,7 +57,7 @@
 							<a class="mr-4 ml-8" href="<?php echo get_the_permalink(84); ?>">Profile</a>
 							<a class="ml-4" href="<?php echo wp_logout_url(get_permalink()); ?>">Logout</a>
 						<?php else : ?>
-							<a class="ml-8" href="<?php echo get_the_permalink(82); ?>">Login</a>
+							<a class="ml-8" href="<?php echo get_the_permalink(84); ?>">Login</a>
 						<?php endif; ?>
 					</div>
 				</div>

@@ -28,22 +28,70 @@
 							<?php endif; ?>
 						<?php endif; ?>
 					</div>
+
 					<?php if (!empty(get_field('player_position'))) : ?>
 						<p>
 							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Position<?php echo count(get_field('player_position')) > 1 ? 's' : ''; ?></span>
 							<?php $i = 0; foreach (get_field('player_position') as $position) : $i++; ?>
-								<span class="capitalize"><?php echo $position['label']; ?><?php if ($i < count(get_field('player_position'))) {echo ', ';} ?></span>
+								<span><?php echo $position['label']; ?><?php if ($i < count(get_field('player_position'))) {echo ', ';} ?></span>
 							<?php endforeach; ?>
 						</p>
 					<?php endif; ?>
 
-					<?php if (get_field('player_preferred_level')) : ?>
+					<?php if (!empty(get_field('staff_role'))) : ?>
 						<p>
-							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Level</span>
-							<?php foreach (get_field('player_preferred_level') as $level) : ?>
-								<span class="text-white rounded px-3 leading-tight inline-block py-2 bg-blue-500 mr-1"><?php echo $level['label']; ?></span>
+							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Position<?php echo count(get_field('staff_role')) > 1 ? 's' : ''; ?></span>
+							<?php $i = 0; foreach (get_field('staff_role') as $role) : $i++; ?>
+								<span><?php echo $role['label']; ?><?php if ($i < count(get_field('staff_role'))) {echo ', ';} ?></span>
 							<?php endforeach; ?>
 						</p>
+					<?php endif; ?>
+
+					<?php if (!empty(get_field('player_preferred_foot'))) : ?>
+						<p>
+							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Preferred Foot</span>
+							<span><?php echo get_field('player_preferred_foot')['label']; ?></span>
+						</p>
+					<?php endif; ?>
+
+					<?php if (get_field('player_height')) : ?>
+						<p>
+							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Height</span>
+							<span class="capitalize"><?php echo get_field('player_height'); ?></span>
+						</p>
+					<?php endif; ?>
+
+					<?php if (get_field('type_of_football')) : ?>
+						<p>
+							<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Type of Football</span>
+							<?php echo get_field('type_of_football')['label']; ?>
+						</p>
+
+						<?php if ((!empty(get_field('type_of_football')['value']) && get_field('type_of_football')['value'] == 'mens') && !empty(get_field('player_preferred_level_men'))) : ?>
+							<p>
+								<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Level</span>
+								<?php foreach (get_field('player_preferred_level_men') as $level) : ?>
+									<span class="text-white rounded px-3 leading-tight inline-block py-2 bg-blue-500 mr-1"><?php echo $level['label']; ?></span>
+								<?php endforeach; ?>
+							</p>
+						<?php endif; ?>
+						<?php if ((!empty(get_field('type_of_football')['value']) && get_field('type_of_football')['value'] == 'womens') && !empty(get_field('player_preferred_level_women'))) : ?>
+							<p>
+								<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Level</span>
+								<?php foreach (get_field('player_preferred_level_women') as $level) : ?>
+									<span class="text-white rounded px-3 leading-tight inline-block py-2 bg-blue-500 mr-1"><?php echo $level['label']; ?></span>
+								<?php endforeach; ?>
+							</p>
+						<?php endif; ?>
+						<?php if ((!empty(get_field('profile_type')['value']) && get_field('profile_type')['value']) == 'staff' && !empty(get_field('player_preferred_level_staff'))) : ?>
+							<p>
+								<span class="block mb-1 uppercase text-sm font-bold tracking-wide">Level</span>
+								<?php foreach (get_field('player_preferred_level_staff') as $level) : ?>
+									<span class="text-white rounded px-3 leading-tight inline-block py-2 bg-blue-500 mr-1"><?php echo $level['label']; ?></span>
+								<?php endforeach; ?>
+							</p>
+						<?php endif; ?>
+
 					<?php endif; ?>
 
 					<?php if (have_rows('player_social_media')) : ?>
@@ -179,15 +227,19 @@
 				<span class="mt-10 inline-block bg-red-200 px-4 py-2 text-xs uppercase font-bold">Visible only to admin users</span>
 				<div class="bg-red-100 p-6 relative">
 					<?php if (get_field('player_email_address') || get_field('player_phone_number')) : ?>
-						<h2 class="font-extrabold text-xl lg:text-4xl mb-2">Contact Details</h2>
-						<p class="!mb-8">
-							<?php if (get_field('player_email_address')) : ?>
-								<span><a href="mailto:<?php echo get_field('player_email_address'); ?>">Email</a></span>
-							<?php endif; ?>
-							<?php if (get_field('player_phone_number')) : ?>
-								<span>| <a href="tel:<?php echo get_field('player_phone_number'); ?>">Phone</a></span>
-							<?php endif; ?>
-						</p>
+						<h2 class="font-extrabold text-xl lg:text-4xl mb-4">Contact Details</h2>
+						<?php if (get_field('player_email_address')) : ?>
+							<p>
+								<strong class="block">Email</strong>
+								<a href="mailto:<?php echo get_field('player_email_address'); ?>"><?php echo get_field('player_email_address'); ?></a>
+							</p>
+						<?php endif; ?>
+						<?php if (get_field('player_phone_number')) : ?>
+							<p>
+								<strong class="block">Phone</strong>
+								<a href="tel:<?php echo get_field('player_phone_number'); ?>"><?php echo get_field('player_phone_number'); ?></a>
+							</p>
+						<?php endif; ?>
 					<?php endif; ?>
 					<?php if (have_rows('player_references')) : ?>
 						<h2 class="font-extrabold text-xl lg:text-4xl mb-2">References</h2>
